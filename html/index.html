@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor Universal</title>
+    <link rel="icon" href="PDF_Icono.png" type="image/png">
+    <link rel="stylesheet" href="style.css"></head>
+<body>
+
+    <div class="contenedor">
+        <div class="encabezado">
+            <img src="img/logo_plataforma.png" alt="Logo Convertidor" class="logo-principal">
+            <h1>Convertidor de Archivos</h1>
+        </div>
+        <p>Selecciona el tipo de conversión y sube tu archivo.</p>
+
+        <form id="formulario-conversion">
+            <div class="grupo-form">
+                <label for="tipo-conversion">¿Qué deseas hacer?</label>
+                <select id="tipo-conversion" name="tipo-conversion">
+                    <option value="pdf-excel">PDF a Excel</option>
+                    <option value="pdf-word">PDF a Word</option>
+                    <option value="word-pdf">Word a PDF</option>
+                </select>
+            </div>
+
+            <div class="visualizacion-iconos">
+                <img id="icono-origen" src="img/PDF_Icono.png" alt="Archivo Origen" class="icono-dinamico">
+                <span class="flecha">➡️</span>
+                <img id="icono-destino" src="img/Excel_icono.png" alt="Archivo Destino" class="icono-dinamico">
+            </div>
+
+            <div class="grupo-form">
+                <label for="archivo">Sube tu archivo:</label>
+                <input type="file" id="archivo" name="archivo" accept=".pdf, .docx">
+            </div>
+
+            <button type="submit" class="btn-convertir">Convertir Archivo</button>
+        </form>
+
+        <div id="mensaje" class="oculto">
+            <p>⏳ Procesando tu archivo...</p>
+        </div>
+    </div>
+
+    <script>
+        const selector = document.getElementById('tipo-conversion');
+        const iconoOrigen = document.getElementById('icono-origen');
+        const iconoDestino = document.getElementById('icono-destino');
+
+        selector.addEventListener('change', function() {
+            if (this.value === 'pdf-excel') {
+                iconoOrigen.src = 'PDF_Icono.png';
+                iconoDestino.src = 'img/Excel_icono.png';
+            } else if (this.value === 'pdf-word') {
+                iconoOrigen.src = 'img/PDF_Icono.png';
+                iconoDestino.src = 'img/word_icono.png';
+            } else if (this.value === 'word-pdf') {
+                iconoOrigen.src = 'img/word_icono.png';
+                iconoDestino.src = 'img/PDF_Icono.png';
+            }
+        });
+    </script>
+</body>
+</html>
